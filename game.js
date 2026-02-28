@@ -4,10 +4,10 @@
 class WeChatMatch3RealStacked {
     constructor() {
         this.boardCols = 6;
-        this.boardRows = 10;
-        this.totalPositions = this.boardCols * this.boardRows; // 60个位置
-        this.totalCards = 180; // 60组 × 3张
-        this.emojiTypes = 60;   // 60种不同的表情
+        this.boardRows = 6;
+        this.totalPositions = this.boardCols * this.boardRows; // 36个位置
+        this.totalCards = 108; // 36组 × 3张
+        this.emojiTypes = 36;   // 36种不同的表情
         this.faceDownPercentage = 0.3; // 30%顶层反面
         this.handSize = 6;      // 手牌区主格子数
         this.timeLimit = 10 * 60; // 10分钟 = 600秒

@@ -58,7 +58,7 @@
         .game-board {
             display: grid;
             grid-template-columns: repeat(6, 120px);
-            grid-template-rows: repeat(10, 120px);
+            grid-template-rows: repeat(6, 120px);
             gap: 10px;
             background: rgba(255, 255, 255, 0.1);
             padding: 20px;
@@ -66,7 +66,7 @@
             backdrop-filter: blur(10px);
             justify-content: center;
             margin: 0 auto;
-            min-height: 1250px;
+            min-height: 770px;
         }
         
         .card-position {
@@ -89,14 +89,21 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
+            font-size: 48px;
             user-select: none;
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            /* 麻将立体感效果 */
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border: 2px solid #ddd;
+            box-shadow: 
+                0 4px 12px rgba(0, 0, 0, 0.3),
+                inset 0 2px 4px rgba(255, 255, 255, 0.8),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
         
         .card-stack.face-up {
-            background: white;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
             color: #333;
         }
         
@@ -108,14 +115,41 @@
         .card-stack.face-down::after {
             content: "?";
             color: white;
-            font-size: 24px;
+            font-size: 32px;
             font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
         
         .card-stack:hover {
-            transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+            transform: scale(1.15) translateY(-8px);
+            box-shadow: 
+                0 8px 20px rgba(0, 0, 0, 0.4),
+                inset 0 2px 4px rgba(255, 255, 255, 0.8),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.1);
             z-index: 100 !important;
+        }
+        
+        /* 翻转动画 */
+        .card-flip-animation {
+            position: fixed;
+            z-index: 1000;
+            pointer-events: none;
+            animation: flipToHand 0.6s ease-out forwards;
+        }
+        
+        @keyframes flipToHand {
+            0% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2) rotate(180deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(0.8) rotate(360deg);
+                opacity: 0;
+            }
         }
         
         .hand-area {
